@@ -6,6 +6,7 @@ const Data = () => {
   const [data, setData] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
+  const [colors] = useState(["#ffcccb", "#a0e57e", "#add8e6"]);
 
   const handleDelete = (id) => {
     // Logika untuk meng-handle delete data dari database
@@ -61,6 +62,7 @@ const Data = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(selectedData),
+      color: colors[data.length % colors.length],
     })
       .then((response) => response.json())
       .then((result) => {
@@ -76,18 +78,18 @@ const Data = () => {
   };
 
   return (
-    <div>
-      <Table className="my-table">
+    <div className="tables mb-5">
+      <Table striped bordered hover variant="success">
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama Pasien</th>
-            <th>Tanggal Lahir</th>
+            <th>Patient</th>
+            <th>Date of birth</th>
             <th>Gender</th>
-            <th>Nama Dokter</th>
-            <th>Diagnosa</th>
-            <th>Obat</th>
-            <th>Aksi</th>
+            <th>Doctor</th>
+            <th>Diagnosis</th>
+            <th>Drug</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -101,10 +103,18 @@ const Data = () => {
               <td>{item.diagnosa}</td>
               <td>{item.obat}</td>
               <td>
-                <Button variant="info" onClick={() => handleUpdate(item.id)}>
+                <Button
+                  variant="success"
+                  style={{ border: "1px solid white " }}
+                  onClick={() => handleUpdate(item.id)}
+                >
                   Update
                 </Button>
-                <Button variant="danger" onClick={() => handleDelete(item.id)}>
+                <Button
+                  variant="danger"
+                  style={{ border: "1px solid white " }}
+                  onClick={() => handleDelete(item.id)}
+                >
                   Delete
                 </Button>
               </td>
@@ -115,14 +125,14 @@ const Data = () => {
 
       {/* Formulir Update */}
       <Modal show={showForm} onHide={handleCloseForm}>
-        <Modal.Header closeButton>
+        <Modal.Header className="formUp" closeButton>
           <Modal.Title>Update Data</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form className="custom-form">
             {/* Menampilkan data yang sudah ada di dalam formulir */}
             <Form.Group controlId="formNamaPasien">
-              <Form.Label>Nama Pasien</Form.Label>
+              <Form.Label>Pasien's name :</Form.Label>
               <Form.Control
                 type="text"
                 value={selectedData?.namaPasien || ""}
@@ -130,7 +140,7 @@ const Data = () => {
               />
             </Form.Group>
             <Form.Group controlId="formTanggalLahir">
-              <Form.Label>Tanggal Lahir</Form.Label>
+              <Form.Label>Date of birth :</Form.Label>
               <Form.Control
                 type="date"
                 value={selectedData?.tanggalLahir || ""}
@@ -140,7 +150,7 @@ const Data = () => {
               />
             </Form.Group>
             <Form.Group controlId="formGender">
-              <Form.Label>Gender</Form.Label>
+              <Form.Label>Gender :</Form.Label>
               <Form.Control
                 as="select"
                 value={selectedData?.gender || ""}
@@ -151,7 +161,7 @@ const Data = () => {
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formNamaDokter">
-              <Form.Label>Nama Dokter</Form.Label>
+              <Form.Label>Doctor's name :</Form.Label>
               <Form.Control
                 type="text"
                 value={selectedData?.namaDokter || ""}
@@ -159,7 +169,7 @@ const Data = () => {
               />
             </Form.Group>
             <Form.Group controlId="formDiagnosa">
-              <Form.Label>Diagnosa</Form.Label>
+              <Form.Label>Diagnosis :</Form.Label>
               <Form.Control
                 type="text"
                 value={selectedData?.diagnosa || ""}
@@ -167,7 +177,7 @@ const Data = () => {
               />
             </Form.Group>
             <Form.Group controlId="formObat">
-              <Form.Label>Obat</Form.Label>
+              <Form.Label>Drug :</Form.Label>
               <Form.Control
                 type="text"
                 value={selectedData?.obat || ""}
@@ -175,7 +185,11 @@ const Data = () => {
               />
             </Form.Group>
 
-            <Button variant="primary" onClick={handleFormSubmit}>
+            <Button
+              variant="success"
+              style={{ border: "1px solid white " }}
+              onClick={handleFormSubmit}
+            >
               Update Data
             </Button>
           </Form>

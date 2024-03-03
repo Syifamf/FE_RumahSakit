@@ -1,70 +1,93 @@
-/* MyTable.css */
-.my-table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  .my-table th, .my-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .my-table th {
-    background-color: #f2f2f2;
-  }
-  
-  /* Formulir.css */
 
-.mt-5 {
-    margin-top: 2rem;
-  }
+/* MyTable.css */
+.tables {
+  margin: auto; 
+  width: 88%; 
+  font-family: 'Poppins', sans-serif;
+  border: 1px solid #ffffff;
+}
+.tables th {
+  border: 1px solid #065151;
+  padding: 12px;
+  text-align: cen;
+}
+
+.tables td {
+  border: 1px solid #065151     ;
+  padding: 12px;
+  text-align: left;
+}
+
+.tables tr {
+  border: 1px solid #065151     ;
+  padding: 12px;
+  text-align: left;
+}
+.custom-form{
+    background-color: #ADD8E6; /* Ganti dengan warna latar belakang yang diinginkan */
+    padding: 2rem; /* Sesuaikan padding sesuai kebutuhan */
+    border-radius: 20px;
+}
+.formUp{
+  background-color: #66CDAA;
+}
+
+
+
+  /* Formulir.css */
+ 
+.form {
+  margin-top: 3rem;
+  margin-left: 15rem;  
+  margin-right: 15rem;
+  margin-bottom: 3rem;
+}
+
+.form-container {
+  padding: 2rem;
+  border: 2px solid #ffffff;
+  border-radius: 40px; /* Lebih bulat sudutnya */
+  margin-bottom: 2rem;
+  background-color: #8FBC8F; /* Latar belakang formulir */
+  box-shadow: 0 0 10px rgba(11, 127, 111, 0.1); /* Efek bayangan untuk menonjolkan formulir */
+  margin: auto; /* Agar form terpusat di tengah */
+}
+
+.subhead-form{
+  color: #000000; 
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.subhead-form hr {
+ border: 1.5px solid #0b5235;
+ width: 30%; 
+}
+
+.alert {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  margin-bottom: 10px;
+}
+
+.form-label {
+  color: #000000;
+  height: 30px;
+}
+
+.form-control {
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+
+
+
+
+
   
-  .form-container {
-    padding: 1.5rem;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    margin-bottom: 2rem;
-  }
-  
-  .form-head-book {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-  }
-  
-  .form-head-book h4 {
-    color: #007bff;
-  }
-  
-  .form-head-book hr {
-    border-top: 2px solid #007bff;
-  }
-  
-  .alert {
-    margin-top: 1rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-  }
-  
-  .form-control {
-    width: 20%;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
-  
+                                                                                                                                                                                                

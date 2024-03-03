@@ -1,10 +1,10 @@
 // Formulir.js
 
 import React, { useState } from "react";
-import { Col, Row, Alert } from "react-bootstrap";
+import { Col, Row, Alert, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "../CSS/style.css"
+import "../CSS/style.css";
 
 const Formulir = ({
   namaPasien,
@@ -64,37 +64,40 @@ const Formulir = ({
   };
 
   return (
-    <div className="mt-5">
-      <Row className="form-head-book">
-        <Col>
-          <h4>Patient Register</h4>
-          <hr />
-        </Col>
-      </Row>
-      <Row>
-        <Col md={6}>
-          {successAlert && (
-            <Alert
-              variant="success"
-              onClose={() => setSuccessAlert(false)}
-              dismissible
-            >
-              Registrasi berhasil! Data pasien telah disimpan.
-            </Alert>
-          )}
+    <div className="form" id="register">
+      <Container>
+        <Row className="subhead-form mt-5" id="register">
+          <Col>
+            <h4 className="fw-bold">Register Patient</h4>
+            <hr />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="alert" md={6}>
+            {successAlert && (
+              <Alert
+                variant="success"
+                onClose={() => setSuccessAlert(false)}
+                dismissible
+              >
+                Registrasi berhasil! Data pasien telah disimpan.
+              </Alert>
+            )}
 
-          {errorAlert && (
-            <Alert
-              variant="danger"
-              onClose={() => setErrorAlert(null)}
-              dismissible
-            >
-              {errorAlert}
-            </Alert>
-          )}
-          <Form onSubmit={handleSubmit}>
+            {errorAlert && (
+              <Alert
+                variant="danger"
+                onClose={() => setErrorAlert(null)}
+                dismissible
+              >
+                {errorAlert}
+              </Alert>
+            )}
+          </Col>
+
+          <Form className="form-container" onSubmit={handleSubmit}>
             <Form.Group controlId="namaPasien">
-              <Form.Label>Nama Pasien : </Form.Label>
+              <Form.Label className="form-label">Patient's name : </Form.Label>
               <Form.Control
                 type="text"
                 name="namaPasien"
@@ -104,30 +107,34 @@ const Formulir = ({
             </Form.Group>
 
             <Form.Group controlId="tanggalLahir">
-              <Form.Label>Tanggal Lahir : </Form.Label>
+              <Form.Label className="form-label">Date of birth : </Form.Label>
               <Form.Control
+                className="form-isi"
                 type="date"
                 name="tanggalLahir"
                 value={tanggalLahir}
                 onChange={handleChange}
               />
             </Form.Group>
-
             <Form.Group controlId="gender">
-              <Form.Label>Gender : </Form.Label>
+              <Form.Label className="form-label">Gender : </Form.Label>
               <Form.Control
                 as="select"
+                custom
                 name="gender"
                 value={gender}
                 onChange={handleChange}
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="" disabled>
+                  Select Gender
+                </option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
               </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="namaDokter">
-              <Form.Label>Nama Dokter : </Form.Label>
+              <Form.Label className="form-label"> Doctor's name: </Form.Label>
               <Form.Control
                 type="text"
                 name="namaDokter"
@@ -137,7 +144,7 @@ const Formulir = ({
             </Form.Group>
 
             <Form.Group controlId="diagnosa">
-              <Form.Label>Diagnosa : </Form.Label>
+              <Form.Label className="form-label">Diagnosis : </Form.Label>
               <Form.Control
                 type="text"
                 name="diagnosa"
@@ -147,7 +154,7 @@ const Formulir = ({
             </Form.Group>
 
             <Form.Group controlId="obat">
-              <Form.Label>Obat : </Form.Label>
+              <Form.Label className="form-label">Drug : </Form.Label>
               <Form.Control
                 type="text"
                 name="obat"
@@ -156,12 +163,16 @@ const Formulir = ({
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button
+              variant="success"
+              type="submit"
+              style={{ border: "1px solid white " }}
+            >
               Register
             </Button>
           </Form>
-        </Col>
-      </Row>
+        </Row>
+      </Container>
     </div>
   );
 };
